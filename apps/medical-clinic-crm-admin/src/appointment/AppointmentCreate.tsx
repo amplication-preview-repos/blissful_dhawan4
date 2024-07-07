@@ -5,19 +5,23 @@ import {
   SimpleForm,
   CreateProps,
   DateTimeInput,
+  TextInput,
   ReferenceInput,
   SelectInput,
-  TextInput,
 } from "react-admin";
 
-import { CustomerTitle } from "../customer/CustomerTitle";
 import { DoctorTitle } from "../doctor/DoctorTitle";
+import { CustomerTitle } from "../customer/CustomerTitle";
 
 export const AppointmentCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
         <DateTimeInput label="appointmentDate" source="appointmentDate" />
+        <TextInput label="reason" multiline source="reason" />
+        <ReferenceInput source="doctor.id" reference="Doctor" label="Doctor">
+          <SelectInput optionText={DoctorTitle} />
+        </ReferenceInput>
         <ReferenceInput
           source="customer.id"
           reference="Customer"
@@ -25,10 +29,6 @@ export const AppointmentCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={CustomerTitle} />
         </ReferenceInput>
-        <ReferenceInput source="doctor.id" reference="Doctor" label="Doctor">
-          <SelectInput optionText={DoctorTitle} />
-        </ReferenceInput>
-        <TextInput label="reason" multiline source="reason" />
       </SimpleForm>
     </Create>
   );

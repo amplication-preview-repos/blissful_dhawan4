@@ -12,14 +12,14 @@ export const CustomerList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
-        <TextField label="birthDate" source="birthDate" />
-        <DateField source="createdAt" label="Created At" />
-        <TextField label="email" source="email" />
-        <TextField label="firstName" source="firstName" />
         <TextField label="ID" source="id" />
-        <TextField label="lastName" source="lastName" />
-        <TextField label="phone" source="phone" />
+        <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="lastName" source="lastName" />
+        <TextField label="email" source="email" />
+        <TextField label="phone" source="phone" />
+        <TextField label="birthDate" source="birthDate" />
+        <TextField label="firstName" source="firstName" />
       </Datagrid>
     </List>
   );

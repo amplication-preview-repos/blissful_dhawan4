@@ -1,14 +1,14 @@
-import { AppointmentListRelationFilter } from "../appointment/AppointmentListRelationFilter";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { AppointmentListRelationFilter } from "../appointment/AppointmentListRelationFilter";
 
 export type CustomerWhereInput = {
-  appointments?: AppointmentListRelationFilter;
-  birthDate?: DateTimeNullableFilter;
-  email?: StringNullableFilter;
-  firstName?: StringNullableFilter;
   id?: StringFilter;
   lastName?: StringNullableFilter;
+  email?: StringNullableFilter;
   phone?: StringNullableFilter;
+  birthDate?: DateTimeNullableFilter;
+  firstName?: StringNullableFilter;
+  appointments?: AppointmentListRelationFilter;
 };

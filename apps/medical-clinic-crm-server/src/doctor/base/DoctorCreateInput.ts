@@ -11,40 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentCreateNestedManyWithoutDoctorsInput } from "./AppointmentCreateNestedManyWithoutDoctorsInput";
 import {
-  ValidateNested,
-  IsOptional,
   IsString,
   MaxLength,
+  IsOptional,
+  ValidateNested,
 } from "class-validator";
+import { AppointmentCreateNestedManyWithoutDoctorsInput } from "./AppointmentCreateNestedManyWithoutDoctorsInput";
 import { Type } from "class-transformer";
 
 @InputType()
 class DoctorCreateInput {
-  @ApiProperty({
-    required: false,
-    type: () => AppointmentCreateNestedManyWithoutDoctorsInput,
-  })
-  @ValidateNested()
-  @Type(() => AppointmentCreateNestedManyWithoutDoctorsInput)
-  @IsOptional()
-  @Field(() => AppointmentCreateNestedManyWithoutDoctorsInput, {
-    nullable: true,
-  })
-  appointments?: AppointmentCreateNestedManyWithoutDoctorsInput;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email?: string | null;
-
   @ApiProperty({
     required: false,
     type: String,
@@ -80,6 +57,29 @@ class DoctorCreateInput {
     nullable: true,
   })
   speciality?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => AppointmentCreateNestedManyWithoutDoctorsInput,
+  })
+  @ValidateNested()
+  @Type(() => AppointmentCreateNestedManyWithoutDoctorsInput)
+  @IsOptional()
+  @Field(() => AppointmentCreateNestedManyWithoutDoctorsInput, {
+    nullable: true,
+  })
+  appointments?: AppointmentCreateNestedManyWithoutDoctorsInput;
 }
 
 export { DoctorCreateInput as DoctorCreateInput };

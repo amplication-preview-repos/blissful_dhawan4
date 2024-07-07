@@ -14,13 +14,13 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsDate,
   IsOptional,
-  ValidateNested,
   IsString,
   MaxLength,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
 import { DoctorWhereUniqueInput } from "../../doctor/base/DoctorWhereUniqueInput";
+import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
 
 @InputType()
 class AppointmentCreateInput {
@@ -37,15 +37,15 @@ class AppointmentCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => CustomerWhereUniqueInput,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => CustomerWhereUniqueInput)
+  @IsString()
+  @MaxLength(1000)
   @IsOptional()
-  @Field(() => CustomerWhereUniqueInput, {
+  @Field(() => String, {
     nullable: true,
   })
-  customer?: CustomerWhereUniqueInput | null;
+  reason?: string | null;
 
   @ApiProperty({
     required: false,
@@ -61,15 +61,15 @@ class AppointmentCreateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => CustomerWhereUniqueInput,
   })
-  @IsString()
-  @MaxLength(1000)
+  @ValidateNested()
+  @Type(() => CustomerWhereUniqueInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => CustomerWhereUniqueInput, {
     nullable: true,
   })
-  reason?: string | null;
+  customer?: CustomerWhereUniqueInput | null;
 }
 
 export { AppointmentCreateInput as AppointmentCreateInput };

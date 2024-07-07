@@ -12,28 +12,25 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
+  IsString,
   IsDate,
   IsOptional,
-  ValidateNested,
-  IsString,
   MaxLength,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Customer } from "../../customer/base/Customer";
 import { Doctor } from "../../doctor/base/Doctor";
+import { Customer } from "../../customer/base/Customer";
 
 @ObjectType()
 class Appointment {
   @ApiProperty({
-    required: false,
+    required: true,
+    type: String,
   })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  appointmentDate!: Date | null;
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: true,
@@ -44,30 +41,23 @@ class Appointment {
   createdAt!: Date;
 
   @ApiProperty({
-    required: false,
-    type: () => Customer,
-  })
-  @ValidateNested()
-  @Type(() => Customer)
-  @IsOptional()
-  customer?: Customer | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Doctor,
-  })
-  @ValidateNested()
-  @Type(() => Doctor)
-  @IsOptional()
-  doctor?: Doctor | null;
-
-  @ApiProperty({
     required: true,
-    type: String,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  appointmentDate!: Date | null;
 
   @ApiProperty({
     required: false,
@@ -82,12 +72,22 @@ class Appointment {
   reason!: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
+    type: () => Doctor,
   })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  @ValidateNested()
+  @Type(() => Doctor)
+  @IsOptional()
+  doctor?: Doctor | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Customer,
+  })
+  @ValidateNested()
+  @Type(() => Customer)
+  @IsOptional()
+  customer?: Customer | null;
 }
 
 export { Appointment as Appointment };

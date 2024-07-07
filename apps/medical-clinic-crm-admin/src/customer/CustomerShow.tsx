@@ -11,36 +11,32 @@ import {
   ReferenceField,
 } from "react-admin";
 
-import { CUSTOMER_TITLE_FIELD } from "./CustomerTitle";
 import { DOCTOR_TITLE_FIELD } from "../doctor/DoctorTitle";
+import { CUSTOMER_TITLE_FIELD } from "./CustomerTitle";
 
 export const CustomerShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField label="birthDate" source="birthDate" />
-        <DateField source="createdAt" label="Created At" />
-        <TextField label="email" source="email" />
-        <TextField label="firstName" source="firstName" />
         <TextField label="ID" source="id" />
-        <TextField label="lastName" source="lastName" />
-        <TextField label="phone" source="phone" />
+        <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="lastName" source="lastName" />
+        <TextField label="email" source="email" />
+        <TextField label="phone" source="phone" />
+        <TextField label="birthDate" source="birthDate" />
+        <TextField label="firstName" source="firstName" />
         <ReferenceManyField
           reference="Appointment"
           target="customerId"
           label="Appointments"
         >
           <Datagrid rowClick="show">
-            <TextField label="appointmentDate" source="appointmentDate" />
+            <TextField label="ID" source="id" />
             <DateField source="createdAt" label="Created At" />
-            <ReferenceField
-              label="Customer"
-              source="customer.id"
-              reference="Customer"
-            >
-              <TextField source={CUSTOMER_TITLE_FIELD} />
-            </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
+            <TextField label="appointmentDate" source="appointmentDate" />
+            <TextField label="reason" source="reason" />
             <ReferenceField
               label="Doctor"
               source="doctor.id"
@@ -48,9 +44,13 @@ export const CustomerShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={DOCTOR_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="ID" source="id" />
-            <TextField label="reason" source="reason" />
-            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField
+              label="Customer"
+              source="customer.id"
+              reference="Customer"
+            >
+              <TextField source={CUSTOMER_TITLE_FIELD} />
+            </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

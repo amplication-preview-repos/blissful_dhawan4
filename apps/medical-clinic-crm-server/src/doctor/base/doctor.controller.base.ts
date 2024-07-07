@@ -52,13 +52,13 @@ export class DoctorControllerBase {
     return await this.service.createDoctor({
       data: data,
       select: {
-        createdAt: true,
-        email: true,
-        firstName: true,
         id: true,
+        createdAt: true,
+        updatedAt: true,
+        firstName: true,
         lastName: true,
         speciality: true,
-        updatedAt: true,
+        email: true,
       },
     });
   }
@@ -80,13 +80,13 @@ export class DoctorControllerBase {
     return this.service.doctors({
       ...args,
       select: {
-        createdAt: true,
-        email: true,
-        firstName: true,
         id: true,
+        createdAt: true,
+        updatedAt: true,
+        firstName: true,
         lastName: true,
         speciality: true,
-        updatedAt: true,
+        email: true,
       },
     });
   }
@@ -109,13 +109,13 @@ export class DoctorControllerBase {
     const result = await this.service.doctor({
       where: params,
       select: {
-        createdAt: true,
-        email: true,
-        firstName: true,
         id: true,
+        createdAt: true,
+        updatedAt: true,
+        firstName: true,
         lastName: true,
         speciality: true,
-        updatedAt: true,
+        email: true,
       },
     });
     if (result === null) {
@@ -147,13 +147,13 @@ export class DoctorControllerBase {
         where: params,
         data: data,
         select: {
-          createdAt: true,
-          email: true,
-          firstName: true,
           id: true,
+          createdAt: true,
+          updatedAt: true,
+          firstName: true,
           lastName: true,
           speciality: true,
-          updatedAt: true,
+          email: true,
         },
       });
     } catch (error) {
@@ -184,13 +184,13 @@ export class DoctorControllerBase {
       return await this.service.deleteDoctor({
         where: params,
         select: {
-          createdAt: true,
-          email: true,
-          firstName: true,
           id: true,
+          createdAt: true,
+          updatedAt: true,
+          firstName: true,
           lastName: true,
           speciality: true,
-          updatedAt: true,
+          email: true,
         },
       });
     } catch (error) {
@@ -219,14 +219,11 @@ export class DoctorControllerBase {
     const results = await this.service.findAppointments(params.id, {
       ...query,
       select: {
-        appointmentDate: true,
+        id: true,
         createdAt: true,
-
-        customer: {
-          select: {
-            id: true,
-          },
-        },
+        updatedAt: true,
+        appointmentDate: true,
+        reason: true,
 
         doctor: {
           select: {
@@ -234,9 +231,11 @@ export class DoctorControllerBase {
           },
         },
 
-        id: true,
-        reason: true,
-        updatedAt: true,
+        customer: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (results === null) {

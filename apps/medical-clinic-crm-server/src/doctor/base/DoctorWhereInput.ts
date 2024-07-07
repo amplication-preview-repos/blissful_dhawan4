@@ -11,36 +11,24 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentListRelationFilter } from "../../appointment/base/AppointmentListRelationFilter";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { AppointmentListRelationFilter } from "../../appointment/base/AppointmentListRelationFilter";
 
 @InputType()
 class DoctorWhereInput {
   @ApiProperty({
     required: false,
-    type: () => AppointmentListRelationFilter,
+    type: StringFilter,
   })
-  @ValidateNested()
-  @Type(() => AppointmentListRelationFilter)
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => AppointmentListRelationFilter, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  appointments?: AppointmentListRelationFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  email?: StringNullableFilter;
+  id?: StringFilter;
 
   @ApiProperty({
     required: false,
@@ -52,17 +40,6 @@ class DoctorWhereInput {
     nullable: true,
   })
   firstName?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringFilter,
-  })
-  @Type(() => StringFilter)
-  @IsOptional()
-  @Field(() => StringFilter, {
-    nullable: true,
-  })
-  id?: StringFilter;
 
   @ApiProperty({
     required: false,
@@ -85,6 +62,29 @@ class DoctorWhereInput {
     nullable: true,
   })
   speciality?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  email?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => AppointmentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => AppointmentListRelationFilter)
+  @IsOptional()
+  @Field(() => AppointmentListRelationFilter, {
+    nullable: true,
+  })
+  appointments?: AppointmentListRelationFilter;
 }
 
 export { DoctorWhereInput as DoctorWhereInput };

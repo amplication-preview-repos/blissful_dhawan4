@@ -1,12 +1,12 @@
-import { Customer } from "../customer/Customer";
 import { Doctor } from "../doctor/Doctor";
+import { Customer } from "../customer/Customer";
 
 export type Appointment = {
-  appointmentDate: Date | null;
-  createdAt: Date;
-  customer?: Customer | null;
-  doctor?: Doctor | null;
   id: string;
-  reason: string | null;
+  createdAt: Date;
   updatedAt: Date;
+  appointmentDate: Date | null;
+  reason: string | null;
+  doctor?: Doctor | null;
+  customer?: Customer | null;
 };

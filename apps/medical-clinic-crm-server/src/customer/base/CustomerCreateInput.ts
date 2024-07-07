@@ -11,40 +11,29 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentCreateNestedManyWithoutCustomersInput } from "./AppointmentCreateNestedManyWithoutCustomersInput";
 import {
-  ValidateNested,
-  IsOptional,
-  IsDate,
   IsString,
   MaxLength,
+  IsOptional,
+  IsDate,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { AppointmentCreateNestedManyWithoutCustomersInput } from "./AppointmentCreateNestedManyWithoutCustomersInput";
 
 @InputType()
 class CustomerCreateInput {
   @ApiProperty({
     required: false,
-    type: () => AppointmentCreateNestedManyWithoutCustomersInput,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => AppointmentCreateNestedManyWithoutCustomersInput)
+  @IsString()
+  @MaxLength(1000)
   @IsOptional()
-  @Field(() => AppointmentCreateNestedManyWithoutCustomersInput, {
+  @Field(() => String, {
     nullable: true,
   })
-  appointments?: AppointmentCreateNestedManyWithoutCustomersInput;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  birthDate?: Date | null;
+  lastName?: string | null;
 
   @ApiProperty({
     required: false,
@@ -67,31 +56,42 @@ class CustomerCreateInput {
   @Field(() => String, {
     nullable: true,
   })
+  phone?: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  birthDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   firstName?: string | null;
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => AppointmentCreateNestedManyWithoutCustomersInput,
   })
-  @IsString()
-  @MaxLength(1000)
+  @ValidateNested()
+  @Type(() => AppointmentCreateNestedManyWithoutCustomersInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => AppointmentCreateNestedManyWithoutCustomersInput, {
     nullable: true,
   })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  appointments?: AppointmentCreateNestedManyWithoutCustomersInput;
 }
 
 export { CustomerCreateInput as CustomerCreateInput };

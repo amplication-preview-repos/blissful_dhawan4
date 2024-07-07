@@ -1,11 +1,11 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type AppointmentOrderByInput = {
-  appointmentDate?: SortOrder;
-  createdAt?: SortOrder;
-  customerId?: SortOrder;
-  doctorId?: SortOrder;
   id?: SortOrder;
-  reason?: SortOrder;
+  createdAt?: SortOrder;
   updatedAt?: SortOrder;
+  appointmentDate?: SortOrder;
+  reason?: SortOrder;
+  doctorId?: SortOrder;
+  customerId?: SortOrder;
 };

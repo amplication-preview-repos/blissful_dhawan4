@@ -14,8 +14,8 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Appointment as PrismaAppointment,
-  Customer as PrismaCustomer,
   Doctor as PrismaDoctor,
+  Customer as PrismaCustomer,
 } from "@prisma/client";
 
 export class AppointmentServiceBase {
@@ -53,19 +53,19 @@ export class AppointmentServiceBase {
     return this.prisma.appointment.delete(args);
   }
 
-  async getCustomer(parentId: string): Promise<PrismaCustomer | null> {
-    return this.prisma.appointment
-      .findUnique({
-        where: { id: parentId },
-      })
-      .customer();
-  }
-
   async getDoctor(parentId: string): Promise<PrismaDoctor | null> {
     return this.prisma.appointment
       .findUnique({
         where: { id: parentId },
       })
       .doctor();
+  }
+
+  async getCustomer(parentId: string): Promise<PrismaCustomer | null> {
+    return this.prisma.appointment
+      .findUnique({
+        where: { id: parentId },
+      })
+      .customer();
   }
 }

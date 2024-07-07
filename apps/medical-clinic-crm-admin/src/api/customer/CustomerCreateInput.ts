@@ -1,10 +1,10 @@
 import { AppointmentCreateNestedManyWithoutCustomersInput } from "./AppointmentCreateNestedManyWithoutCustomersInput";
 
 export type CustomerCreateInput = {
-  appointments?: AppointmentCreateNestedManyWithoutCustomersInput;
-  birthDate?: Date | null;
-  email?: string | null;
-  firstName?: string | null;
   lastName?: string | null;
+  email?: string | null;
   phone?: string | null;
+  birthDate?: Date | null;
+  firstName?: string | null;
+  appointments?: AppointmentCreateNestedManyWithoutCustomersInput;
 };

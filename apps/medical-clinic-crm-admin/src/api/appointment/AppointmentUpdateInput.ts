@@ -1,9 +1,9 @@
-import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
 import { DoctorWhereUniqueInput } from "../doctor/DoctorWhereUniqueInput";
+import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
 
 export type AppointmentUpdateInput = {
   appointmentDate?: Date | null;
-  customer?: CustomerWhereUniqueInput | null;
-  doctor?: DoctorWhereUniqueInput | null;
   reason?: string | null;
+  doctor?: DoctorWhereUniqueInput | null;
+  customer?: CustomerWhereUniqueInput | null;
 };

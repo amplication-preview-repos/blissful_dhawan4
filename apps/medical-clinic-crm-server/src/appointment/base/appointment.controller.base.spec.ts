@@ -18,34 +18,34 @@ import { AppointmentService } from "../appointment.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  appointmentDate: new Date(),
-  createdAt: new Date(),
   id: "exampleId",
-  reason: "exampleReason",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  appointmentDate: new Date(),
+  reason: "exampleReason",
 };
 const CREATE_RESULT = {
-  appointmentDate: new Date(),
-  createdAt: new Date(),
   id: "exampleId",
-  reason: "exampleReason",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  appointmentDate: new Date(),
+  reason: "exampleReason",
 };
 const FIND_MANY_RESULT = [
   {
-    appointmentDate: new Date(),
-    createdAt: new Date(),
     id: "exampleId",
-    reason: "exampleReason",
+    createdAt: new Date(),
     updatedAt: new Date(),
+    appointmentDate: new Date(),
+    reason: "exampleReason",
   },
 ];
 const FIND_ONE_RESULT = {
-  appointmentDate: new Date(),
-  createdAt: new Date(),
   id: "exampleId",
-  reason: "exampleReason",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  appointmentDate: new Date(),
+  reason: "exampleReason",
 };
 
 const service = {
@@ -130,9 +130,9 @@ describe("Appointment", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        appointmentDate: CREATE_RESULT.appointmentDate.toISOString(),
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        appointmentDate: CREATE_RESULT.appointmentDate.toISOString(),
       });
   });
 
@@ -143,9 +143,9 @@ describe("Appointment", () => {
       .expect([
         {
           ...FIND_MANY_RESULT[0],
-          appointmentDate: FIND_MANY_RESULT[0].appointmentDate.toISOString(),
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
+          appointmentDate: FIND_MANY_RESULT[0].appointmentDate.toISOString(),
         },
       ]);
   });
@@ -167,9 +167,9 @@ describe("Appointment", () => {
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
-        appointmentDate: FIND_ONE_RESULT.appointmentDate.toISOString(),
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
+        appointmentDate: FIND_ONE_RESULT.appointmentDate.toISOString(),
       });
   });
 
@@ -181,9 +181,9 @@ describe("Appointment", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        appointmentDate: CREATE_RESULT.appointmentDate.toISOString(),
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        appointmentDate: CREATE_RESULT.appointmentDate.toISOString(),
       })
       .then(function () {
         agent

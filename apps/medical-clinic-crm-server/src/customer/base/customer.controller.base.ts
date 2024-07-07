@@ -54,14 +54,14 @@ export class CustomerControllerBase {
     return await this.service.createCustomer({
       data: data,
       select: {
-        birthDate: true,
-        createdAt: true,
-        email: true,
-        firstName: true,
         id: true,
-        lastName: true,
-        phone: true,
+        createdAt: true,
         updatedAt: true,
+        lastName: true,
+        email: true,
+        phone: true,
+        birthDate: true,
+        firstName: true,
       },
     });
   }
@@ -83,14 +83,14 @@ export class CustomerControllerBase {
     return this.service.customers({
       ...args,
       select: {
-        birthDate: true,
-        createdAt: true,
-        email: true,
-        firstName: true,
         id: true,
-        lastName: true,
-        phone: true,
+        createdAt: true,
         updatedAt: true,
+        lastName: true,
+        email: true,
+        phone: true,
+        birthDate: true,
+        firstName: true,
       },
     });
   }
@@ -113,14 +113,14 @@ export class CustomerControllerBase {
     const result = await this.service.customer({
       where: params,
       select: {
-        birthDate: true,
-        createdAt: true,
-        email: true,
-        firstName: true,
         id: true,
-        lastName: true,
-        phone: true,
+        createdAt: true,
         updatedAt: true,
+        lastName: true,
+        email: true,
+        phone: true,
+        birthDate: true,
+        firstName: true,
       },
     });
     if (result === null) {
@@ -152,14 +152,14 @@ export class CustomerControllerBase {
         where: params,
         data: data,
         select: {
-          birthDate: true,
-          createdAt: true,
-          email: true,
-          firstName: true,
           id: true,
-          lastName: true,
-          phone: true,
+          createdAt: true,
           updatedAt: true,
+          lastName: true,
+          email: true,
+          phone: true,
+          birthDate: true,
+          firstName: true,
         },
       });
     } catch (error) {
@@ -190,14 +190,14 @@ export class CustomerControllerBase {
       return await this.service.deleteCustomer({
         where: params,
         select: {
-          birthDate: true,
-          createdAt: true,
-          email: true,
-          firstName: true,
           id: true,
-          lastName: true,
-          phone: true,
+          createdAt: true,
           updatedAt: true,
+          lastName: true,
+          email: true,
+          phone: true,
+          birthDate: true,
+          firstName: true,
         },
       });
     } catch (error) {
@@ -226,14 +226,11 @@ export class CustomerControllerBase {
     const results = await this.service.findAppointments(params.id, {
       ...query,
       select: {
-        appointmentDate: true,
+        id: true,
         createdAt: true,
-
-        customer: {
-          select: {
-            id: true,
-          },
-        },
+        updatedAt: true,
+        appointmentDate: true,
+        reason: true,
 
         doctor: {
           select: {
@@ -241,9 +238,11 @@ export class CustomerControllerBase {
           },
         },
 
-        id: true,
-        reason: true,
-        updatedAt: true,
+        customer: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (results === null) {

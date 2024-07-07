@@ -1,12 +1,12 @@
 import { Appointment } from "../appointment/Appointment";
 
 export type Doctor = {
-  appointments?: Array<Appointment>;
-  createdAt: Date;
-  email: string | null;
-  firstName: string | null;
   id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  firstName: string | null;
   lastName: string | null;
   speciality: string | null;
-  updatedAt: Date;
+  email: string | null;
+  appointments?: Array<Appointment>;
 };

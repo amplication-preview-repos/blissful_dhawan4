@@ -26,8 +26,8 @@ import { AppointmentFindUniqueArgs } from "./AppointmentFindUniqueArgs";
 import { CreateAppointmentArgs } from "./CreateAppointmentArgs";
 import { UpdateAppointmentArgs } from "./UpdateAppointmentArgs";
 import { DeleteAppointmentArgs } from "./DeleteAppointmentArgs";
-import { Customer } from "../../customer/base/Customer";
 import { Doctor } from "../../doctor/base/Doctor";
+import { Customer } from "../../customer/base/Customer";
 import { AppointmentService } from "../appointment.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Appointment)
@@ -97,15 +97,15 @@ export class AppointmentResolverBase {
       data: {
         ...args.data,
 
-        customer: args.data.customer
-          ? {
-              connect: args.data.customer,
-            }
-          : undefined,
-
         doctor: args.data.doctor
           ? {
               connect: args.data.doctor,
+            }
+          : undefined,
+
+        customer: args.data.customer
+          ? {
+              connect: args.data.customer,
             }
           : undefined,
       },
@@ -128,15 +128,15 @@ export class AppointmentResolverBase {
         data: {
           ...args.data,
 
-          customer: args.data.customer
-            ? {
-                connect: args.data.customer,
-              }
-            : undefined,
-
           doctor: args.data.doctor
             ? {
                 connect: args.data.doctor,
+              }
+            : undefined,
+
+          customer: args.data.customer
+            ? {
+                connect: args.data.customer,
               }
             : undefined,
         },
@@ -173,27 +173,6 @@ export class AppointmentResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Customer, {
-    nullable: true,
-    name: "customer",
-  })
-  @nestAccessControl.UseRoles({
-    resource: "Customer",
-    action: "read",
-    possession: "any",
-  })
-  async getCustomer(
-    @graphql.Parent() parent: Appointment
-  ): Promise<Customer | null> {
-    const result = await this.service.getCustomer(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Doctor, {
     nullable: true,
     name: "doctor",
@@ -207,6 +186,27 @@ export class AppointmentResolverBase {
     @graphql.Parent() parent: Appointment
   ): Promise<Doctor | null> {
     const result = await this.service.getDoctor(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Customer, {
+    nullable: true,
+    name: "customer",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Customer",
+    action: "read",
+    possession: "any",
+  })
+  async getCustomer(
+    @graphql.Parent() parent: Appointment
+  ): Promise<Customer | null> {
+    const result = await this.service.getCustomer(parent.id);
 
     if (!result) {
       return null;

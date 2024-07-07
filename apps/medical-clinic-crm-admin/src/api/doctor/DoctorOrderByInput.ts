@@ -1,11 +1,11 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type DoctorOrderByInput = {
-  createdAt?: SortOrder;
-  email?: SortOrder;
-  firstName?: SortOrder;
   id?: SortOrder;
+  createdAt?: SortOrder;
+  updatedAt?: SortOrder;
+  firstName?: SortOrder;
   lastName?: SortOrder;
   speciality?: SortOrder;
-  updatedAt?: SortOrder;
+  email?: SortOrder;
 };

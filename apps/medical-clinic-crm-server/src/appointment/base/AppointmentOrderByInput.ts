@@ -28,7 +28,7 @@ class AppointmentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  appointmentDate?: SortOrder;
+  id?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -50,7 +50,7 @@ class AppointmentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  customerId?: SortOrder;
+  updatedAt?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -61,18 +61,7 @@ class AppointmentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  doctorId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  id?: SortOrder;
+  appointmentDate?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -94,7 +83,18 @@ class AppointmentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  updatedAt?: SortOrder;
+  doctorId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  customerId?: SortOrder;
 }
 
 export { AppointmentOrderByInput as AppointmentOrderByInput };

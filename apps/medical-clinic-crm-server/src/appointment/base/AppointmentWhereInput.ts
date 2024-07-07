@@ -11,16 +11,27 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
-import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
-import { DoctorWhereUniqueInput } from "../../doctor/base/DoctorWhereUniqueInput";
-import { StringFilter } from "../../util/StringFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DoctorWhereUniqueInput } from "../../doctor/base/DoctorWhereUniqueInput";
+import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
 
 @InputType()
 class AppointmentWhereInput {
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  id?: StringFilter;
+
   @ApiProperty({
     required: false,
     type: DateTimeNullableFilter,
@@ -34,15 +45,14 @@ class AppointmentWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => CustomerWhereUniqueInput,
+    type: StringNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => CustomerWhereUniqueInput)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => CustomerWhereUniqueInput, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  customer?: CustomerWhereUniqueInput;
+  reason?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -58,25 +68,15 @@ class AppointmentWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: () => CustomerWhereUniqueInput,
   })
-  @Type(() => StringFilter)
+  @ValidateNested()
+  @Type(() => CustomerWhereUniqueInput)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => CustomerWhereUniqueInput, {
     nullable: true,
   })
-  id?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  reason?: StringNullableFilter;
+  customer?: CustomerWhereUniqueInput;
 }
 
 export { AppointmentWhereInput as AppointmentWhereInput };

@@ -18,42 +18,42 @@ import { DoctorService } from "../doctor.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
   lastName: "exampleLastName",
   speciality: "exampleSpeciality",
-  updatedAt: new Date(),
+  email: "exampleEmail",
 };
 const CREATE_RESULT = {
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
   lastName: "exampleLastName",
   speciality: "exampleSpeciality",
-  updatedAt: new Date(),
+  email: "exampleEmail",
 };
 const FIND_MANY_RESULT = [
   {
-    createdAt: new Date(),
-    email: "exampleEmail",
-    firstName: "exampleFirstName",
     id: "exampleId",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    firstName: "exampleFirstName",
     lastName: "exampleLastName",
     speciality: "exampleSpeciality",
-    updatedAt: new Date(),
+    email: "exampleEmail",
   },
 ];
 const FIND_ONE_RESULT = {
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
   lastName: "exampleLastName",
   speciality: "exampleSpeciality",
-  updatedAt: new Date(),
+  email: "exampleEmail",
 };
 
 const service = {

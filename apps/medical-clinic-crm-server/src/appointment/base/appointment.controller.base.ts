@@ -52,27 +52,24 @@ export class AppointmentControllerBase {
       data: {
         ...data,
 
-        customer: data.customer
-          ? {
-              connect: data.customer,
-            }
-          : undefined,
-
         doctor: data.doctor
           ? {
               connect: data.doctor,
             }
           : undefined,
+
+        customer: data.customer
+          ? {
+              connect: data.customer,
+            }
+          : undefined,
       },
       select: {
-        appointmentDate: true,
+        id: true,
         createdAt: true,
-
-        customer: {
-          select: {
-            id: true,
-          },
-        },
+        updatedAt: true,
+        appointmentDate: true,
+        reason: true,
 
         doctor: {
           select: {
@@ -80,9 +77,11 @@ export class AppointmentControllerBase {
           },
         },
 
-        id: true,
-        reason: true,
-        updatedAt: true,
+        customer: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -104,14 +103,11 @@ export class AppointmentControllerBase {
     return this.service.appointments({
       ...args,
       select: {
-        appointmentDate: true,
+        id: true,
         createdAt: true,
-
-        customer: {
-          select: {
-            id: true,
-          },
-        },
+        updatedAt: true,
+        appointmentDate: true,
+        reason: true,
 
         doctor: {
           select: {
@@ -119,9 +115,11 @@ export class AppointmentControllerBase {
           },
         },
 
-        id: true,
-        reason: true,
-        updatedAt: true,
+        customer: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -144,14 +142,11 @@ export class AppointmentControllerBase {
     const result = await this.service.appointment({
       where: params,
       select: {
-        appointmentDate: true,
+        id: true,
         createdAt: true,
-
-        customer: {
-          select: {
-            id: true,
-          },
-        },
+        updatedAt: true,
+        appointmentDate: true,
+        reason: true,
 
         doctor: {
           select: {
@@ -159,9 +154,11 @@ export class AppointmentControllerBase {
           },
         },
 
-        id: true,
-        reason: true,
-        updatedAt: true,
+        customer: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -194,27 +191,24 @@ export class AppointmentControllerBase {
         data: {
           ...data,
 
-          customer: data.customer
-            ? {
-                connect: data.customer,
-              }
-            : undefined,
-
           doctor: data.doctor
             ? {
                 connect: data.doctor,
               }
             : undefined,
+
+          customer: data.customer
+            ? {
+                connect: data.customer,
+              }
+            : undefined,
         },
         select: {
-          appointmentDate: true,
+          id: true,
           createdAt: true,
-
-          customer: {
-            select: {
-              id: true,
-            },
-          },
+          updatedAt: true,
+          appointmentDate: true,
+          reason: true,
 
           doctor: {
             select: {
@@ -222,9 +216,11 @@ export class AppointmentControllerBase {
             },
           },
 
-          id: true,
-          reason: true,
-          updatedAt: true,
+          customer: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -255,14 +251,11 @@ export class AppointmentControllerBase {
       return await this.service.deleteAppointment({
         where: params,
         select: {
-          appointmentDate: true,
+          id: true,
           createdAt: true,
-
-          customer: {
-            select: {
-              id: true,
-            },
-          },
+          updatedAt: true,
+          appointmentDate: true,
+          reason: true,
 
           doctor: {
             select: {
@@ -270,9 +263,11 @@ export class AppointmentControllerBase {
             },
           },
 
-          id: true,
-          reason: true,
-          updatedAt: true,
+          customer: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {

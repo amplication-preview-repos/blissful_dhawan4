@@ -11,40 +11,29 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentUpdateManyWithoutCustomersInput } from "./AppointmentUpdateManyWithoutCustomersInput";
 import {
-  ValidateNested,
-  IsOptional,
-  IsDate,
   IsString,
   MaxLength,
+  IsOptional,
+  IsDate,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { AppointmentUpdateManyWithoutCustomersInput } from "./AppointmentUpdateManyWithoutCustomersInput";
 
 @InputType()
 class CustomerUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => AppointmentUpdateManyWithoutCustomersInput,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => AppointmentUpdateManyWithoutCustomersInput)
+  @IsString()
+  @MaxLength(1000)
   @IsOptional()
-  @Field(() => AppointmentUpdateManyWithoutCustomersInput, {
+  @Field(() => String, {
     nullable: true,
   })
-  appointments?: AppointmentUpdateManyWithoutCustomersInput;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  birthDate?: Date | null;
+  lastName?: string | null;
 
   @ApiProperty({
     required: false,
@@ -67,31 +56,42 @@ class CustomerUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  phone?: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  birthDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   firstName?: string | null;
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => AppointmentUpdateManyWithoutCustomersInput,
   })
-  @IsString()
-  @MaxLength(1000)
+  @ValidateNested()
+  @Type(() => AppointmentUpdateManyWithoutCustomersInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => AppointmentUpdateManyWithoutCustomersInput, {
     nullable: true,
   })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  appointments?: AppointmentUpdateManyWithoutCustomersInput;
 }
 
 export { CustomerUpdateInput as CustomerUpdateInput };

@@ -1,13 +1,13 @@
 import { Appointment } from "../appointment/Appointment";
 
 export type Customer = {
-  appointments?: Array<Appointment>;
-  birthDate: Date | null;
-  createdAt: Date;
-  email: string | null;
-  firstName: string | null;
   id: string;
-  lastName: string | null;
-  phone: string | null;
+  createdAt: Date;
   updatedAt: Date;
+  lastName: string | null;
+  email: string | null;
+  phone: string | null;
+  birthDate: Date | null;
+  firstName: string | null;
+  appointments?: Array<Appointment>;
 };

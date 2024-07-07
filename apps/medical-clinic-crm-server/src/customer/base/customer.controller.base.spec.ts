@@ -18,46 +18,46 @@ import { CustomerService } from "../customer.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  birthDate: new Date(),
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  phone: "examplePhone",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  lastName: "exampleLastName",
+  email: "exampleEmail",
+  phone: "examplePhone",
+  birthDate: new Date(),
+  firstName: "exampleFirstName",
 };
 const CREATE_RESULT = {
-  birthDate: new Date(),
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  phone: "examplePhone",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  lastName: "exampleLastName",
+  email: "exampleEmail",
+  phone: "examplePhone",
+  birthDate: new Date(),
+  firstName: "exampleFirstName",
 };
 const FIND_MANY_RESULT = [
   {
-    birthDate: new Date(),
-    createdAt: new Date(),
-    email: "exampleEmail",
-    firstName: "exampleFirstName",
     id: "exampleId",
-    lastName: "exampleLastName",
-    phone: "examplePhone",
+    createdAt: new Date(),
     updatedAt: new Date(),
+    lastName: "exampleLastName",
+    email: "exampleEmail",
+    phone: "examplePhone",
+    birthDate: new Date(),
+    firstName: "exampleFirstName",
   },
 ];
 const FIND_ONE_RESULT = {
-  birthDate: new Date(),
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  phone: "examplePhone",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  lastName: "exampleLastName",
+  email: "exampleEmail",
+  phone: "examplePhone",
+  birthDate: new Date(),
+  firstName: "exampleFirstName",
 };
 
 const service = {
@@ -142,9 +142,9 @@ describe("Customer", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        birthDate: CREATE_RESULT.birthDate.toISOString(),
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        birthDate: CREATE_RESULT.birthDate.toISOString(),
       });
   });
 
@@ -155,9 +155,9 @@ describe("Customer", () => {
       .expect([
         {
           ...FIND_MANY_RESULT[0],
-          birthDate: FIND_MANY_RESULT[0].birthDate.toISOString(),
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
+          birthDate: FIND_MANY_RESULT[0].birthDate.toISOString(),
         },
       ]);
   });
@@ -179,9 +179,9 @@ describe("Customer", () => {
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
-        birthDate: FIND_ONE_RESULT.birthDate.toISOString(),
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
+        birthDate: FIND_ONE_RESULT.birthDate.toISOString(),
       });
   });
 
@@ -193,9 +193,9 @@ describe("Customer", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        birthDate: CREATE_RESULT.birthDate.toISOString(),
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        birthDate: CREATE_RESULT.birthDate.toISOString(),
       })
       .then(function () {
         agent

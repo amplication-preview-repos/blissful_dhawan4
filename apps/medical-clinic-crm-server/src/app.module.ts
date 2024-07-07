@@ -3,6 +3,7 @@ import { CustomerModule } from "./customer/customer.module";
 import { DoctorModule } from "./doctor/doctor.module";
 import { AppointmentModule } from "./appointment/appointment.module";
 import { UserModule } from "./user/user.module";
+import { WidgetsModule } from "./Widgets/widgets.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -24,6 +25,7 @@ import { AuthModule } from "./auth/auth.module";
     DoctorModule,
     AppointmentModule,
     UserModule,
+    WidgetsModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

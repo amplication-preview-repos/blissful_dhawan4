@@ -11,60 +11,15 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentListRelationFilter } from "../../appointment/base/AppointmentListRelationFilter";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { AppointmentListRelationFilter } from "../../appointment/base/AppointmentListRelationFilter";
 
 @InputType()
 class CustomerWhereInput {
-  @ApiProperty({
-    required: false,
-    type: () => AppointmentListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => AppointmentListRelationFilter)
-  @IsOptional()
-  @Field(() => AppointmentListRelationFilter, {
-    nullable: true,
-  })
-  appointments?: AppointmentListRelationFilter;
-
-  @ApiProperty({
-    required: false,
-    type: DateTimeNullableFilter,
-  })
-  @Type(() => DateTimeNullableFilter)
-  @IsOptional()
-  @Field(() => DateTimeNullableFilter, {
-    nullable: true,
-  })
-  birthDate?: DateTimeNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  email?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  firstName?: StringNullableFilter;
-
   @ApiProperty({
     required: false,
     type: StringFilter,
@@ -96,7 +51,52 @@ class CustomerWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  email?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   phone?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  birthDate?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  firstName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => AppointmentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => AppointmentListRelationFilter)
+  @IsOptional()
+  @Field(() => AppointmentListRelationFilter, {
+    nullable: true,
+  })
+  appointments?: AppointmentListRelationFilter;
 }
 
 export { CustomerWhereInput as CustomerWhereInput };

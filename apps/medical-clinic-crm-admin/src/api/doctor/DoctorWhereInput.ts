@@ -1,12 +1,12 @@
-import { AppointmentListRelationFilter } from "../appointment/AppointmentListRelationFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { AppointmentListRelationFilter } from "../appointment/AppointmentListRelationFilter";
 
 export type DoctorWhereInput = {
-  appointments?: AppointmentListRelationFilter;
-  email?: StringNullableFilter;
-  firstName?: StringNullableFilter;
   id?: StringFilter;
+  firstName?: StringNullableFilter;
   lastName?: StringNullableFilter;
   speciality?: StringNullableFilter;
+  email?: StringNullableFilter;
+  appointments?: AppointmentListRelationFilter;
 };

@@ -11,26 +11,25 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { Appointment } from "../../appointment/base/Appointment";
 import {
-  ValidateNested,
-  IsOptional,
-  IsDate,
   IsString,
+  IsDate,
   MaxLength,
+  IsOptional,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { Appointment } from "../../appointment/base/Appointment";
 
 @ObjectType()
 class Doctor {
   @ApiProperty({
-    required: false,
-    type: () => [Appointment],
+    required: true,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => Appointment)
-  @IsOptional()
-  appointments?: Array<Appointment>;
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: true,
@@ -41,15 +40,12 @@ class Doctor {
   createdAt!: Date;
 
   @ApiProperty({
-    required: false,
-    type: String,
+    required: true,
   })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email!: string | null;
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  updatedAt!: Date;
 
   @ApiProperty({
     required: false,
@@ -62,14 +58,6 @@ class Doctor {
     nullable: true,
   })
   firstName!: string | null;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  id!: string;
 
   @ApiProperty({
     required: false,
@@ -96,12 +84,24 @@ class Doctor {
   speciality!: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
+    type: String,
   })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Appointment],
+  })
+  @ValidateNested()
+  @Type(() => Appointment)
+  @IsOptional()
+  appointments?: Array<Appointment>;
 }
 
 export { Doctor as Doctor };
